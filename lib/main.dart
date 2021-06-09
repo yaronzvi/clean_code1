@@ -7,6 +7,7 @@ import 'application/getitmodules/bloc_binding_module.dart';
 import 'application/getitmodules/net_binding_module.dart';
 import 'application/getitmodules/repository_binding_module.dart';
 
+// test remark by yaron
 /// This is our global ServiceLocator/Dependency injection
 GetIt getIt = GetIt.instance;
 
@@ -14,15 +15,15 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   registerGetItModules();
   runApp(FutureBuilder(
-    future: getIt.allReady(),
-    builder: (context, snapshot) {
-      final doneInitAll = snapshot.connectionState == ConnectionState.done && snapshot.hasData;
-      return doneInitAll ? MyApp() : Loader();
-    }
-  ));
+      future: getIt.allReady(),
+      builder: (context, snapshot) {
+        final doneInitAll = snapshot.connectionState == ConnectionState.done &&
+            snapshot.hasData;
+        return doneInitAll ? MyApp() : Loader();
+      }));
 }
 
-registerGetItModules(){
+registerGetItModules() {
   NetBindingModule.provideNetModules();
   DataBindingModule.providesModules();
   RepositoryBindingModule.provideModules();
@@ -30,8 +31,6 @@ registerGetItModules(){
 }
 
 class MyApp extends StatelessWidget {
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -57,6 +56,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -70,6 +70,3 @@ class Loader extends StatelessWidget {
     );
   }
 }
-
-
-
