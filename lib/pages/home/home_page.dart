@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_lecture_clean_code/main.dart';
-import 'package:flutter_lecture_clean_code/pages/home/widgets/users_list_view.dart';
-import 'package:flutter_lecture_clean_code/utils/size_config.dart';
-import 'package:flutter_lecture_clean_code/widgets/custom_button.dart';
+import 'package:first_proj/main.dart';
+import 'package:first_proj/pages/home/widgets/users_list_view.dart';
+import 'package:first_proj/utils/size_config.dart';
+import 'package:first_proj/widgets/custom_button.dart';
 
 import 'home_bloc.dart';
 import 'home_states_events.dart';
@@ -15,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -39,9 +38,12 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _clearButton(),
                   _button(),
+                  _addRestButton(),
                 ],
               ),
-              SizedBox(height: SizeConfig.spacing_medium_vertical,),
+              SizedBox(
+                height: SizeConfig.spacing_medium_vertical,
+              ),
               Expanded(child: _usersBlocHandler()),
             ],
           ),
@@ -50,38 +52,56 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _button(){
+  Widget _button() {
+    return BlocBuilder<HomeCubit, BaseHomeState>(builder: (context, state) {
+      final enable = state is! LoadingState;
+      return CustomButton(
+        enable: enable,
+        text: "load users",
+        color: enable ? Colors.blue : Colors.grey.withOpacity(0.5),
+
+        /// Old way Bloc
+        // onClick: ()=> context.read<HomeBloc>().add(GetUsersListEvent()),
+        /// New way Cubit
+        onClick: () => context.read<HomeCubit>().getUsers(),
+      );
+    });
+  }
+
+  Widget _addRestButton() {
+    return BlocBuilder<HomeCubit, BaseHomeState>(builder: (context, state) {
+      final enable = state is! LoadingState;
+      return CustomButton(
+        enable: enable,
+        text: "Add Resturent",
+        color: enable ? Colors.blue : Colors.grey.withOpacity(0.5),
+
+        /// Old way Bloc
+        // onClick: ()=> context.read<HomeBloc>().add(GetUsersListEvent()),
+        /// New way Cubit
+        onClick: () => context.read<HomeCubit>().getUsers(),
+      );
+    });
+  }
+
+  Widget _clearButton() {
     return BlocBuilder<HomeCubit, BaseHomeState>(
       builder: (context, state) {
-        final enable = state is! LoadingState;
-        return CustomButton(
-          enable: enable,
-          text: "load users",
-          color: enable ? Colors.blue :Colors.grey.withOpacity(0.5),
-          /// Old way Bloc
-          // onClick: ()=> context.read<HomeBloc>().add(GetUsersListEvent()),
-          /// New way Cubit
-          onClick: ()=> context.read<HomeCubit>().getUsers(),
-        );
-      }
-    );
-  }
-  
-  Widget _clearButton(){
-    return BlocBuilder<HomeCubit, BaseHomeState>(
-      builder: (context,state){
-          final opacity = state is UsersListResult && (state).users.isNotEmpty ? 1.0 : 0.0 ;
-          return AnimatedOpacity(
-              opacity: opacity,
-              duration: Duration(milliseconds: 300),
+        final opacity =
+            state is UsersListResult && (state).users.isNotEmpty ? 1.0 : 0.0;
+        return AnimatedOpacity(
+          opacity: opacity,
+          duration: Duration(milliseconds: 300),
           child: CustomButton(
             enable: opacity == 1,
             text: "clear",
+
             /// Old way Bloc
             // onClick:()=> context.read<HomeCubit>().add(ClearListEvent()),
             /// New way Cubit
-            onClick:()=> context.read<HomeCubit>().clearList(),
-          ),);
+            onClick: () => context.read<HomeCubit>().clearList(),
+          ),
+        );
       },
     );
   }
@@ -90,5 +110,4 @@ class _HomePageState extends State<HomePage> {
     return BlocBuilder<HomeCubit, BaseHomeState>(
         builder: (context, state) => UsersListView(state: state));
   }
-
 }

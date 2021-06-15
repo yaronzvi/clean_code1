@@ -1,4 +1,4 @@
-# flutter_lecture_clean_code
+# first_proj
 
 ## UPDATE TO FLUTTER 2 + NULL SAFETY!!!
 

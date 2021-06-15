@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "292571917177",
+    "project_id": "bestmana",
+    "storage_bucket": "bestmana.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292571917177:android:ee7c2fd930c345ca66dda8",
+        "android_client_info": {
+          "package_name": "com.bestmana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292571917177-e2q2mqe1cc2fpg5eegeue74skgf8av7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bestmana",
+            "certificate_hash": "bcfe0633273838d42f17d417345bc648f46f9834"
+          }
+        },
+        {
+          "client_id": "292571917177-mfehvsmh6po2l1h2hmml3dbf5vmeqf0f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBkeZAbFto7ft3XXZ88CLQfSyCvYEzxsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292571917177-mfehvsmh6po2l1h2hmml3dbf5vmeqf0f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-import 'package:flutter_lecture_clean_code/data/model/user/user.dart';
+import 'package:first_proj/data/model/user/user.dart';
 
 abstract class UsersDataSourceLocal {
   Future<void> saveUsersCache(List<User>? users);
@@ -11,6 +11,5 @@ abstract class UsersDataSourceLocal {
 }
 
 abstract class UsersDataSourceRemote {
-
   Future<List<User>> getUsers();
 }

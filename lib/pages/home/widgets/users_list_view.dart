@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_lecture_clean_code/data/model/user/user.dart';
-import 'package:flutter_lecture_clean_code/utils/size_config.dart';
+import 'package:first_proj/data/model/user/user.dart';
+import 'package:first_proj/utils/size_config.dart';
 
 import '../home_states_events.dart';
 

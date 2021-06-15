@@ -1,8 +1,8 @@
-import 'package:flutter_lecture_clean_code/data/model/user/user.dart';
-import 'package:flutter_lecture_clean_code/data/source/users/local/db/user_dao.dart';
-import 'package:flutter_lecture_clean_code/data/source/users/users_data_source.dart';
+import 'package:first_proj/data/model/user/user.dart';
+import 'package:first_proj/data/source/users/local/db/user_dao.dart';
+import 'package:first_proj/data/source/users/users_data_source.dart';
 
-class UsersLocalRepository implements UsersDataSourceLocal{
+class UsersLocalRepository implements UsersDataSourceLocal {
   final UserDao _userDao;
   List<User>? _userListCache;
 
@@ -15,7 +15,7 @@ class UsersLocalRepository implements UsersDataSourceLocal{
 
   @override
   Future<void> saveUsersCache(List<User>? users) {
-    return Future(()=> _userListCache = users);
+    return Future(() => _userListCache = users);
   }
 
   @override
@@ -27,5 +27,4 @@ class UsersLocalRepository implements UsersDataSourceLocal{
   Future<void> saveUsersDb(List<User> users) {
     return _userDao.insertUsers(users);
   }
-
 }
