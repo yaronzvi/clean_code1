@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_lecture_clean_code/main.dart';
-import 'package:flutter_lecture_clean_code/pages/home/widgets/users_list_view.dart';
-import 'package:flutter_lecture_clean_code/utils/size_config.dart';
-import 'package:flutter_lecture_clean_code/widgets/custom_button.dart';
+import 'package:first_proj/main.dart';
+import 'package:first_proj/pages/home/widgets/users_list_view.dart';
+import 'package:first_proj/utils/size_config.dart';
+import 'package:first_proj/widgets/custom_button.dart';
 
 import 'home_bloc.dart';
 import 'home_states_events.dart';

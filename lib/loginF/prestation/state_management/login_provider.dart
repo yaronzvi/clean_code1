@@ -15,9 +15,10 @@ class LoginProvider with ChangeNotifier {
   Future<String> signInWithGoogle() async {
     await Firebase.initializeApp();
 
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAccount? googleSignInAccount =
+        await googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+        await googleSignInAccount!.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleSignInAuthentication.accessToken,
@@ -26,7 +27,7 @@ class LoginProvider with ChangeNotifier {
 
     final UserCredential authResult =
         await _auth.signInWithCredential(credential);
-    final User user = authResult.user;
+    final User? user = authResult.user;
 
     if (user != null) {
       assert(!user.isAnonymous);

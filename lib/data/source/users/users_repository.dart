@@ -1,13 +1,11 @@
-import 'package:flutter_lecture_clean_code/data/model/user/user.dart';
-import 'package:flutter_lecture_clean_code/data/source/users/users_data_source.dart';
+import 'package:first_proj/data/model/user/user.dart';
+import 'package:first_proj/data/source/users/users_data_source.dart';
 
 class UsersRepository {
   final UsersDataSourceLocal _local;
   final UsersDataSourceRemote _remote;
 
   UsersRepository(this._local, this._remote);
-
-
 
   ///
   /// Load users

@@ -1,4 +1,4 @@
-import 'package:flutter_lecture_clean_code/data/model/user/user.dart';
+import 'package:first_proj/data/model/user/user.dart';
 
 ///
 /// HOME STATES

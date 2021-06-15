@@ -1,4 +1,4 @@
-package com.sahar.flutter_lecture_clean_code
+package com.sahar.first_proj
 
 import io.flutter.embedding.android.FlutterActivity
 
