@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lecture_clean_code/application/getitmodules/data_binding_module.dart';
+import 'package:flutter_lecture_clean_code/loginF/prestation/pages/login_page.dart';
 import 'package:flutter_lecture_clean_code/pages/home/home_page.dart';
 import 'package:get_it/get_it.dart';
 
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
