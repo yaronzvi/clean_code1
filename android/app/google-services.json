@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "292571917177-e2q2mqe1cc2fpg5eegeue74skgf8av7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bestmana",
+            "certificate_hash": "bcfe0633273838d42f17d417345bc648f46f9834"
+          }
+        },
+        {
           "client_id": "292571917177-mfehvsmh6po2l1h2hmml3dbf5vmeqf0f.apps.googleusercontent.com",
           "client_type": 3
         }
