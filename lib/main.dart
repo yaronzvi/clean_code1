@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:first_proj/application/getitmodules/data_binding_module.dart';
 import 'package:first_proj/loginF/prestation/pages/login_page.dart';
-import 'package:first_proj/pages/home/home_page.dart';
 import 'package:get_it/get_it.dart';
 
 import 'application/getitmodules/bloc_binding_module.dart';
 import 'application/getitmodules/net_binding_module.dart';
 import 'application/getitmodules/repository_binding_module.dart';
 
-// test remark by yaron
+// test remark by yaron1
 /// This is our global ServiceLocator/Dependency injection
 GetIt getIt = GetIt.instance;
 
