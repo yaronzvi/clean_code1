@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:self_instagram/core/widgets/instagram_logo.dart';
+import 'package:first_proj/core/widgets/instagram_logo.dart';
 
 class RegisterProfilePage extends StatelessWidget {
   const RegisterProfilePage({Key? key}) : super(key: key);
