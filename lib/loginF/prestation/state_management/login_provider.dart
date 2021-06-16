@@ -12,7 +12,7 @@ class LoginProvider with ChangeNotifier {
       : _auth = FirebaseAuth.instance,
         googleSignIn = GoogleSignIn();
 
-  Future<String> signInWithGoogle() async {
+  Future<String?> signInWithGoogle() async {
     await Firebase.initializeApp();
 
     final GoogleSignInAccount? googleSignInAccount =
@@ -33,8 +33,8 @@ class LoginProvider with ChangeNotifier {
       assert(!user.isAnonymous);
       assert(await user.getIdToken() != null);
 
-      final User currentUser = _auth.currentUser;
-      assert(user.uid == currentUser.uid);
+      final User? currentUser = _auth.currentUser;
+      assert(user.uid == currentUser!.uid);
 
       print('signInWithGoogle succeeded: $user');
 
