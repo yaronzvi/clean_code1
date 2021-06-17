@@ -1,23 +1,23 @@
+import 'package:first_proj/data/model/Restaurant/Restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:first_proj/data/model/user/user.dart';
 import 'package:first_proj/utils/size_config.dart';
 
 import '../home_states_events.dart';
 
-class UsersListView extends StatelessWidget {
+class RestaurantsListView extends StatelessWidget {
   final BaseHomeState state;
 
-  const UsersListView({Key? key, required this.state}) : super(key: key);
+  const RestaurantsListView({Key? key, required this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     switch (state.runtimeType) {
       case LoadingState:
         return _circularProgress();
-      case UsersListResult:
-        final users = (state as UsersListResult).users;
-        return _usersListView(users);
+      case RestaurantsListResult:
+        final restaurants = (state as RestaurantsListResult).restaurants;
+        return _restaurantsListView(restaurants);
       case ErrorState:
         final message = (state as ErrorState).message;
         return _errorState(message);
@@ -28,13 +28,14 @@ class UsersListView extends StatelessWidget {
 
   Widget _firstTime() {
     return Center(
-      child: Text("Please press at the top button to load users users :)"),
+      child: Text(
+          "Please press at the top button to load Restaurants Restaurants :)"),
     );
   }
 
   Widget _errorState(String? message) {
     return Text(
-      message ?? "Failed load users",
+      message ?? "Failed load Restaurants",
       style: TextStyle(color: Colors.red),
     );
   }
@@ -48,25 +49,27 @@ class UsersListView extends StatelessWidget {
     );
   }
 
-  Widget _usersListView(List<User> users) {
+  Widget _restaurantsListView(List<Restaurant> restaurants) {
     return ListView.separated(
-      itemCount: users.length,
+      itemCount: restaurants.length,
       separatorBuilder: (context, index) => Divider(
         color: Colors.grey,
       ),
-      itemBuilder: (context, index) => _userItem(users[index]),
+      itemBuilder: (context, index) => _restaurantItem(restaurants[index]),
     );
   }
 
-  Widget _userItem(User user) {
+  Widget _restaurantItem(Restaurant restaurant) {
     return ListTile(
       leading: Icon(Icons.account_box_rounded),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("${user.name}"),
-          Text(user.age.toString()),
-          Text("${user.subject}"),
+          Text(restaurant.id.toString()),
+          Text("${restaurant.name}"),
+          Text("${restaurant.address}"),
+          Text("${restaurant.description}"),
+          Text("${restaurant.remarks}"),
         ],
       ),
     );

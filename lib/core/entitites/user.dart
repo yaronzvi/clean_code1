@@ -1,4 +1,4 @@
-class InstagramUser {
+class InstagramRestaurant {
   String? uid;
   String? url;
 }
