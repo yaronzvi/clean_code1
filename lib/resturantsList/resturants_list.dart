@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
-class NoteList extends StatelessWidget {
+class ResturantsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

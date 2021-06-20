@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:first_proj/add_resturantF/import_to_fire.dart';
 import 'package:first_proj/resturantsList/resturants_list.dart';
+import 'package:first_proj/search/presentation/search_page.dart';
 import 'package:flutter/material.dart';
 
 // test remark by yaron1
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       //home: ImportToFirebase(),
-      home: NoteList(),
+      //home: NoteList(),
+      home: SearchPage(),
     );
   }
 }
@@ -45,12 +47,12 @@ class Loader extends StatelessWidget {
   }
 }
 
-void _bootStrapFirebase() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+// void _bootStrapFirebase() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
 
-  //FirebaseMessaging.onBackgroundMessage(onBackgroundMessageHandler);
-}
+//   //FirebaseMessaging.onBackgroundMessage(onBackgroundMessageHandler);
+// }
 
 Future<void> onBackgroundMessageHandler(RemoteMessage message) async {
   print("Handling a background message ${message.data}");
