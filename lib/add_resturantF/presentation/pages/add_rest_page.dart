@@ -44,8 +44,8 @@ class PhotoUploader extends StatelessWidget {
           CirclePhoto(),
           SizedBox(height: 10),
           InkWell(
-            child:
-                Text('Upload User Photo', style: TextStyle(color: Colors.blue)),
+            child: Text('Upload Restaurant Photo',
+                style: TextStyle(color: Colors.blue)),
             onTap: () => {},
           ),
           SizedBox(height: 10),

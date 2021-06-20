@@ -29,25 +29,18 @@ dependencies:
 
   # firebase
   flutter_signin_button: ^2.0.0
-  firebase_auth: ^1.1.2
-  firebase_core: ^1.1.0
+  firebase_auth: ^1.4.1
+  firebase_core: ^1.3.0
+  firebase_messaging: ^10.0.2
   # cloud storage 
-  cloud_firestore: ^2.0.0
+  cloud_firestore: ^2.2.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
 
-  # Get it dependency (Dependency injection)
-  get_it: ^7.1.3
-  # retrofit dio wrapper dependency
-  retrofit: ^2.0.0
-  # Pretty logger json interceptor
-  pretty_dio_logger: ^1.1.1
-  # Bloc state management dependency
-  flutter_bloc: ^7.0.1
-  # floor db
-  floor: ^1.1.0
+  # json_mapper
+  dart_json_mapper: ^2.1.2
 
 # Functional Programming
   dartz: ^0.10.0-nullsafety.1
@@ -64,10 +57,10 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.0.4
-  floor_generator: ^1.1.0
-  retrofit_generator: any
   json_serializable: ^4.1.3
   auto_route_generator: ^2.0.1
+  test: 
+  
 
 
   flutter_test:
@@ -87,6 +80,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/core/assets/Instagram_logo.svg
+    - lib/core/assets/rest_list3.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

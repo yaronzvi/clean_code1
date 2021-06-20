@@ -1,4 +1,4 @@
-import 'package:first_proj/data/model/user/user.dart';
+import 'package:first_proj/data/model/Restaurant/Restaurant.dart';
 
 ///
 /// HOME STATES
@@ -11,10 +11,10 @@ class InitialState extends BaseHomeState {}
 
 class LoadingState extends BaseHomeState {}
 
-class UsersListResult extends BaseHomeState {
-  final List<User> users;
+class RestaurantsListResult extends BaseHomeState {
+  final List<Restaurant> restaurants;
 
-  UsersListResult(this.users);
+  RestaurantsListResult(this.restaurants);
 }
 
 class ErrorState extends BaseHomeState {
@@ -33,7 +33,7 @@ class ErrorState extends BaseHomeState {
 ///
 abstract class BaseHomeEvent {}
 
-class GetUsersListEvent extends BaseHomeEvent {}
+class GetRestaurantsListEvent extends BaseHomeEvent {}
 
 class ClearListEvent extends BaseHomeEvent {}
 

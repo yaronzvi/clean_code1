@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "292571917177-e2q2mqe1cc2fpg5eegeue74skgf8av7s.apps.googleusercontent.com",
+          "client_id": "292571917177-e2q2mqe1cc2fpg5eegeue74skgf8av7s.apps.googleRestaurantcontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.bestmana",
@@ -22,7 +22,7 @@
           }
         },
         {
-          "client_id": "292571917177-mfehvsmh6po2l1h2hmml3dbf5vmeqf0f.apps.googleusercontent.com",
+          "client_id": "292571917177-mfehvsmh6po2l1h2hmml3dbf5vmeqf0f.apps.googleRestaurantcontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "292571917177-mfehvsmh6po2l1h2hmml3dbf5vmeqf0f.apps.googleusercontent.com",
+              "client_id": "292571917177-mfehvsmh6po2l1h2hmml3dbf5vmeqf0f.apps.googleRestaurantcontent.com",
               "client_type": 3
             }
           ]

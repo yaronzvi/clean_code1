@@ -19,19 +19,19 @@ int Scale(int source, double scale_factor) {
   return static_cast<int>(source * scale_factor);
 }
 
-// Dynamically loads the |EnableNonClientDpiScaling| from the User32 module.
+// Dynamically loads the |EnableNonClientDpiScaling| from the Restaurant32 module.
 // This API is only needed for PerMonitor V1 awareness mode.
 void EnableFullDpiSupportIfAvailable(HWND hwnd) {
-  HMODULE user32_module = LoadLibraryA("User32.dll");
-  if (!user32_module) {
+  HMODULE Restaurant32_module = LoadLibraryA("Restaurant32.dll");
+  if (!Restaurant32_module) {
     return;
   }
   auto enable_non_client_dpi_scaling =
       reinterpret_cast<EnableNonClientDpiScaling*>(
-          GetProcAddress(user32_module, "EnableNonClientDpiScaling"));
+          GetProcAddress(Restaurant32_module, "EnableNonClientDpiScaling"));
   if (enable_non_client_dpi_scaling != nullptr) {
     enable_non_client_dpi_scaling(hwnd);
-    FreeLibrary(user32_module);
+    FreeLibrary(Restaurant32_module);
   }
 }
 
@@ -136,7 +136,7 @@ LRESULT CALLBACK Win32Window::WndProc(HWND const window,
                                       LPARAM const lparam) noexcept {
   if (message == WM_NCCREATE) {
     auto window_struct = reinterpret_cast<CREATESTRUCT*>(lparam);
-    SetWindowLongPtr(window, GWLP_USERDATA,
+    SetWindowLongPtr(window, GWLP_RestaurantDATA,
                      reinterpret_cast<LONG_PTR>(window_struct->lpCreateParams));
 
     auto that = static_cast<Win32Window*>(window_struct->lpCreateParams);
@@ -207,7 +207,7 @@ void Win32Window::Destroy() {
 
 Win32Window* Win32Window::GetThisFromHandle(HWND const window) noexcept {
   return reinterpret_cast<Win32Window*>(
-      GetWindowLongPtr(window, GWLP_USERDATA));
+      GetWindowLongPtr(window, GWLP_RestaurantDATA));
 }
 
 void Win32Window::SetChildContent(HWND content) {

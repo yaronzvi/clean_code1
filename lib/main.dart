@@ -1,34 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:first_proj/add_resturantF/import_to_fire.dart';
+import 'package:first_proj/resturantsList/resturants_list.dart';
 import 'package:flutter/material.dart';
-import 'package:first_proj/application/getitmodules/data_binding_module.dart';
-import 'package:first_proj/loginF/prestation/pages/login_page.dart';
-import 'package:first_proj/pages/home/home_page.dart';
-import 'package:get_it/get_it.dart';
 
-import 'application/getitmodules/bloc_binding_module.dart';
-import 'application/getitmodules/net_binding_module.dart';
-import 'application/getitmodules/repository_binding_module.dart';
+// test remark by yaron1
 
-// test remark by yaron
-/// This is our global ServiceLocator/Dependency injection
-GetIt getIt = GetIt.instance;
-
-void main() {
+void main() async {
+  // Initialize Firebase
   WidgetsFlutterBinding.ensureInitialized();
-  registerGetItModules();
-  runApp(FutureBuilder(
-      future: getIt.allReady(),
-      builder: (context, snapshot) {
-        final doneInitAll = snapshot.connectionState == ConnectionState.done &&
-            snapshot.hasData;
-        return doneInitAll ? MyApp() : Loader();
-      }));
-}
+  await Firebase.initializeApp();
 
-registerGetItModules() {
-  NetBindingModule.provideNetModules();
-  DataBindingModule.providesModules();
-  RepositoryBindingModule.provideModules();
-  BlocBindingModule.provideModules();
+  //_bootStrapFirebase();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -38,22 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      //home: ImportToFirebase(),
+      home: NoteList(),
     );
   }
 }
@@ -70,4 +43,20 @@ class Loader extends StatelessWidget {
       ),
     );
   }
+}
+
+void _bootStrapFirebase() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  //FirebaseMessaging.onBackgroundMessage(onBackgroundMessageHandler);
+}
+
+Future<void> onBackgroundMessageHandler(RemoteMessage message) async {
+  print("Handling a background message ${message.data}");
+  //WidgetsFlutterBinding.ensureInitialized();
+
+  //You need to do everything in here
+  //If you need to do anything with firebase you also need to call
+  //await Firebase.initializeApp();
 }
