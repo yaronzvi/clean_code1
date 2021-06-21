@@ -54,7 +54,9 @@ class _SearchPageState extends State<SearchPage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return ResturantsList();
+                        return ResturantsList(
+                          manaName: manaName,
+                        );
                       },
                     ),
                   );

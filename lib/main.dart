@@ -1,7 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:first_proj/add_resturantF/import_to_fire.dart';
-import 'package:first_proj/resturantsList/resturants_list.dart';
 import 'package:first_proj/search/presentation/search_page.dart';
 import 'package:flutter/material.dart';
 

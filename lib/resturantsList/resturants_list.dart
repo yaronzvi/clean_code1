@@ -5,18 +5,29 @@ import 'package:flutter/material.dart';
 // final CollectionReference restCollection =
 //     FirebaseFirestore.instance.collection(kRestaurantCollection);
 
-final _firestore = FirebaseFirestore.instance;
+class ResturantsList extends StatefulWidget {
+  final manaName;
+  ResturantsList({required this.manaName});
 
-class ResturantsList extends StatelessWidget {
+  @override
+  _ResturantsListState createState() => _ResturantsListState();
+}
+
+class _ResturantsListState extends State<ResturantsList> {
   @override
   Widget build(BuildContext context) {
+    final _firestore = FirebaseFirestore.instance
+        .collection(kRestaurantCollection)
+        .where('name', isGreaterThanOrEqualTo: widget.manaName)
+        .where('name', isLessThan: widget.manaName + 'z');
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Resturants"),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _firestore.collection(kRestaurantCollection).snapshots(),
+        stream: _firestore.snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(
