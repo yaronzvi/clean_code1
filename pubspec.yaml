@@ -17,6 +17,8 @@ dependencies:
   
   # SVG support
   flutter_svg: ^0.22.0
+  # fonts
+  google_fonts: ^2.1.0
 
   # firebase
   flutter_signin_button: ^2.0.0
