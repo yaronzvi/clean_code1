@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_proj/constants.dart';
+import 'package:first_proj/data/model/restaurant/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,17 +18,13 @@ class ResturantsList extends StatefulWidget {
 class _ResturantsListState extends State<ResturantsList> {
   @override
   Widget build(BuildContext context) {
-    // final _firestore = FirebaseFirestore.instance
-    //     .collection(kRestaurantCollection)
-    //     .where('name', isGreaterThanOrEqualTo: widget.manaName)
-    //     .where('name', isLessThan: widget.manaName + 'z');
-
     final _firestore = FirebaseFirestore.instance
         .collection(kRestaurantCollection)
-        .where('name', isGreaterThanOrEqualTo: widget.manaName)
-        .where('name', isLessThan: widget.manaName + 'z')
-        .orderBy('name')
-        .limit(3);
+        // temporary stop using name
+        //.where('name', isGreaterThanOrEqualTo: widget.manaName)
+        //.where('name', isLessThan: widget.manaName + 'z')
+        //.orderBy('name')
+        .limit(10);
 
     return Scaffold(
       appBar: AppBar(
@@ -49,10 +46,16 @@ class _ResturantsListState extends State<ResturantsList> {
                     children: [
                       Padding(padding: const EdgeInsets.all(8.0)),
                       ListTile(
+                        leading: FlutterLogo(size: 72.0),
                         title: Text(
-                          doc.data().toString(),
-                          style: TextStyle(fontSize: 20.0),
+                          doc['name'].toString(),
+                          style: TextStyle(fontSize: 16.0),
                         ),
+                        subtitle: Text(
+                          doc['address'].toString(),
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                        trailing: Icon(Icons.more_vert),
                       ),
                       Padding(padding: const EdgeInsets.all(8.0)),
                     ],
