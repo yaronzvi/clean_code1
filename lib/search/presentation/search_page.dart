@@ -2,6 +2,7 @@ import 'package:first_proj/constants.dart';
 import 'package:first_proj/resturantsList/resturants_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -9,7 +10,25 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  Position _currentPosition = Position(
+    floor: 0,
+    accuracy: 0,
+    heading: 0,
+    timestamp: DateTime.fromMicrosecondsSinceEpoch(0),
+    speed: 0,
+    longitude: 0,
+    latitude: 0,
+    altitude: 0,
+    speedAccuracy: 0,
+  );
+
   String? manaName;
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +85,28 @@ class _SearchPageState extends State<SearchPage> {
                   style: kButtonTextStyle,
                 ),
               ),
+
+              Container(
+                child: Text(_currentPosition.latitude.toString()),
+              ),
+              Container(
+                child: Text(_currentPosition.longitude.toString()),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  _getCurrentLocation() async {
+    Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+        .then((Position position) {
+      setState(() {
+        _currentPosition = position;
+      });
+    }).catchError((e) {
+      print(e);
+    });
   }
 }

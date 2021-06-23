@@ -46,6 +46,9 @@ dependencies:
 
   # Sign In 
   google_sign_in: ^5.0.4
+  
+  # geolocator
+  geolocator: ^7.1.1
 
 
 dev_dependencies:

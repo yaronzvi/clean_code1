@@ -9,7 +9,6 @@ void main() async {
   // Initialize Firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   //_bootStrapFirebase();
   runApp(MyApp());
 }
